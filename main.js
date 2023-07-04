@@ -9,7 +9,7 @@ const diff = (d2) => {
 
   return {
     days: Math.floor(timeBetween / (24 * 3600)),
-    hours: Math.floor(timeBetween / 3600),
+    hours: Math.floor((timeBetween % (24 * 3600)) / 3600),
     minutes: Math.floor(timeBetween / 60) % 60,
     seconds: timeBetween % 60,
   }
