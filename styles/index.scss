@@ -1,0 +1,185 @@
+@import "./main.scss";
+@import "./variables.scss";
+@import "./responsive.scss";
+
+#app {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.countdown-wrapper {
+  padding: 0 1rem;
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+
+  @include desktop {
+    gap: 82px;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
+
+.container-segment {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .text {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.6rem;
+    color: #8385a9;
+    font-weight: bold;
+  }
+}
+
+.cards {
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include desktop {
+    gap: 2rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  color: var(--soft-red);
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+
+  @include desktop {
+    font-size: 3.8rem;
+  }
+
+  .top,
+  .bottom,
+  .flip-top,
+  .flip-bottom {
+    padding: 0.5em;
+    height: 0.75em;
+    overflow: hidden;
+    line-height: 1;
+  }
+
+  .top {
+    background-color: var(--dark-desaturated-blue);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    filter: brightness(0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .bottom,
+  .flip-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: var(--dark-desaturated-blue);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  .flip-top,
+  .flip-bottom {
+    position: absolute;
+    width: 100%;
+    background-color: var(--dark-desaturated-blue);
+  }
+
+  .flip-bottom {
+    bottom: 0;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: var(--dark-black-blue);
+
+    &.right {
+      left: auto;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+  }
+}
+
+.flip-card {
+  .flip-top {
+    transform-origin: bottom;
+    animation: flip-up 0.3s ease-in;
+  }
+
+  .flip-bottom {
+    transform-origin: top;
+    transform: rotateX(90deg);
+    animation: flip-down 0.3s ease-out 300ms;
+  }
+
+  @keyframes flip-up {
+    100% {
+      transform: rotateX(90deg);
+    }
+  }
+
+  @keyframes flip-down {
+    100% {
+      transform: rotateX(0);
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background-image: url("../assets/icons/pattern-hills.svg");
+  background-repeat: no-repeat;
+  background-position-x: 80%;
+  width: 100%;
+  height: 190px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include desktop {
+    background-position-x: unset;
+    background-size: cover;
+    height: 220px;
+  }
+}
+
+.social-btns {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  .link:hover a {
+    color: var(--soft-red);
+  }
+
+  a {
+    color: #8385a9;
+  }
+}
